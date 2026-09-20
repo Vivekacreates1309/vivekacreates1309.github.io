@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Viveka Anand Singh</title>
+<meta name="description" content="Product manager in training — portfolio of Viveka Anand Singh.">
+<style>
+  :root{
+    --bg:#F5F6F9;
+    --surface:#FFFFFF;
+    --surface-2:#EEF1F6;
+    --ink:#141B2E;
+    --ink-soft:#5A6478;
+    --ink-faint:#8A93A8;
+    --border:#E1E4EC;
+    --accent:#0E8F76;
+    --accent-ink:#075E4C;
+    --accent-soft:#E1F3EE;
+    --amber:#C97A1F;
+    --amber-soft:#FBEBD8;
+    --bad:#B3492A;
+    --bad-soft:#FBE6DF;
+    --shadow: 0 1px 2px rgba(20,27,46,0.04), 0 8px 24px -12px rgba(20,27,46,0.12);
+    font-size:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E121C;
+      --surface:#161C29;
+      --surface-2:#1D2434;
+      --ink:#ECEEF5;
+      --ink-soft:#A6ADC0;
+      --ink-faint:#727A8F;
+      --border:#2A3145;
+      --accent:#3FCBAA;
+      --accent-ink:#B7F0DF;
+      --accent-soft:#153029;
+      --amber:#E7A75C;
+      --amber-soft:#332512;
+      --bad:#E08A6E;
+      --bad-soft:#33201A;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E121C;
+    --surface:#161C29;
+    --surface-2:#1D2434;
+    --ink:#ECEEF5;
+    --ink-soft:#A6ADC0;
+    --ink-faint:#727A8F;
+    --border:#2A3145;
+    --accent:#3FCBAA;
+    --accent-ink:#B7F0DF;
+    --accent-soft:#153029;
+    --amber:#E7A75C;
+    --amber-soft:#332512;
+    --bad:#E08A6E;
+    --bad-soft:#33201A;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -12px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing:border-box; }
+  html, body{ background:var(--bg); }
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:"IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-inline: max(20px, calc((100vw - 1040px)/2));
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  h1,h2,h3{ font-family:"Fraunces", Georgia, serif; margin:0; text-wrap:balance; }
+  a{ color:inherit; }
+  .mono{ font-family:"IBM Plex Mono", "SFMono-Regular", monospace; font-variant-numeric:tabular-nums; }
+  .wrap{ max-width:1040px; margin:0 auto; }
+  section{ padding-block: 64px; border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.75rem; letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--accent-ink); font-weight:600; margin:0 0 12px;
+  }
+  .lede{ color:var(--ink-soft); font-size:1.08rem; line-height:1.65; max-width:60ch; }
+
+  /* nav */
+  nav{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:16px; background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--border);
+    margin-inline: max(-20px, calc(-1 * (100vw - 1040px)/2));
+    padding-inline: max(20px, calc((100vw - 1040px)/2));
+  }
+  .brand{ font-family:"Fraunces", serif; font-weight:600; font-size:1.05rem; text-decoration:none; }
+  .navlinks{ display:flex; gap:22px; font-size:0.88rem; color:var(--ink-soft); }
+  .navlinks a{ text-decoration:none; }
+  .navlinks a:hover{ color:var(--accent-ink); }
+  @media (max-width:560px){ .navlinks{ gap:14px; font-size:0.8rem; } }
+
+  /* hero */
+  .hero{ padding-block: 56px 40px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+  .hero h1{ font-size:clamp(2.1rem, 5vw, 3.4rem); line-height:1.08; font-weight:600; }
+  .hero h1 em{ font-style:normal; color:var(--accent-ink); }
+  .hero-grid{ display:grid; grid-template-columns: 1.15fr 0.85fr; gap:40px; align-items:center; }
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+  .cta-row{ display:flex; gap:12px; margin-top:28px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:8px; font-size:0.92rem; font-weight:600;
+    text-decoration:none; border:1px solid transparent; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{ background:var(--accent); color:#062E24; }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+  .btn-ghost{ border-color:var(--border); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent-ink); }
+
+  .funnel-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:22px; box-shadow:var(--shadow);
+  }
+  .funnel-card .cap{ font-size:0.78rem; color:var(--ink-faint); margin-top:12px; }
+  svg text{ fill:var(--ink-soft); font-family:"IBM Plex Mono", monospace; }
+
+  /* kpi strip */
+  .kpi-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:12px; overflow:hidden; margin-top:36px; }
+  .kpi{ background:var(--surface); padding:18px 16px; }
+  .kpi .num{ font-family:"Fraunces", serif; font-size:1.7rem; font-weight:600; color:var(--accent-ink); }
+  .kpi .lbl{ font-size:0.78rem; color:var(--ink-soft); margin-top:4px; }
+  @media (max-width:640px){ .kpi-strip{ grid-template-columns:repeat(2,1fr); } }
+
+  h2.section-title{ font-size:clamp(1.5rem,3vw,2rem); font-weight:600; margin-bottom:8px; }
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:32px; }
+
+  /* journey table */
+  .journey{ width:100%; border-collapse:collapse; }
+  .journey th{ text-align:left; font-family:"IBM Plex Mono",monospace; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; padding:0 14px 10px; border-bottom:1px solid var(--border); }
+  .journey td{ padding:16px 14px; border-bottom:1px solid var(--border); vertical-align:top; font-size:0.94rem; }
+  .journey tr:last-child td{ border-bottom:none; }
+  .journey .period{ font-family:"IBM Plex Mono",monospace; color:var(--ink-faint); font-size:0.82rem; white-space:nowrap; }
+  .journey .role{ font-weight:600; }
+  .journey .org{ color:var(--ink-soft); font-size:0.86rem; }
+  .journey .detail{ color:var(--ink-soft); font-size:0.9rem; line-height:1.55; }
+  .tbl-wrap{ overflow-x:auto; }
+  @media (max-width:700px){
+    .journey thead{ display:none; }
+    .journey, .journey tbody, .journey tr, .journey td{ display:block; width:100%; }
+    .journey tr{ padding:14px 0; border-bottom:1px solid var(--border); }
+    .journey td{ border-bottom:none; padding:2px 0; }
+  }
+
+  /* case study */
+  .case{ background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:36px; box-shadow:var(--shadow); }
+  .tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:0.7rem; letter-spacing:0.05em; text-transform:uppercase; padding:4px 10px; border-radius:99px; background:var(--accent-soft); color:var(--accent-ink); font-weight:600; }
+  .case h3{ font-size:1.7rem; margin:14px 0 10px; }
+  .stat-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:28px 0; }
+  @media (max-width:640px){ .stat-row{ grid-template-columns:1fr 1fr; } }
+  .stat{ background:var(--surface-2); border-radius:12px; padding:16px; }
+  .stat .n{ font-family:"Fraunces",serif; font-size:1.9rem; font-weight:600; }
+  .stat .n.bad{ color:var(--bad); }
+  .stat .n.warn{ color:var(--amber); }
+  .stat .n.good{ color:var(--accent-ink); }
+  .stat .d{ font-size:0.82rem; color:var(--ink-soft); margin-top:3px; }
+
+  blockquote{ margin:24px 0; padding:16px 20px; border-left:3px solid var(--accent); background:var(--accent-soft); border-radius:0 10px 10px 0; font-style:italic; color:var(--ink); font-size:0.98rem; line-height:1.6; }
+  blockquote cite{ display:block; font-style:normal; margin-top:8px; font-size:0.78rem; color:var(--ink-faint); font-family:"IBM Plex Mono",monospace; }
+
+  .bar-chart{ margin:26px 0; }
+  .bar-row{ display:grid; grid-template-columns:170px 1fr 46px; align-items:center; gap:10px; margin-bottom:10px; font-size:0.86rem; }
+  .bar-row .label{ color:var(--ink-soft); text-align:right; }
+  .bar-track{ background:var(--surface-2); border-radius:5px; height:14px; overflow:hidden; }
+  .bar-fill{ height:100%; background:var(--accent); border-radius:5px; }
+  .bar-row .val{ font-family:"IBM Plex Mono",monospace; color:var(--ink-faint); }
+  @media (max-width:600px){ .bar-row{ grid-template-columns:96px 1fr 36px; font-size:0.78rem; } }
+
+  .mvp-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 24px; margin:20px 0 0; padding:0; list-style:none; }
+  @media (max-width:640px){ .mvp-list{ grid-template-columns:1fr; } }
+  .mvp-list li{ font-size:0.92rem; color:var(--ink-soft); padding-left:20px; position:relative; }
+  .mvp-list li::before{ content:"→"; position:absolute; left:0; color:var(--accent); }
+
+  .case-foot{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:28px; flex-wrap:wrap; }
+  .stack-line{ font-family:"IBM Plex Mono",monospace; font-size:0.78rem; color:var(--ink-faint); }
+
+  /* second project + skills */
+  .grid-2{ display:grid; grid-template-columns:1.3fr 1fr; gap:24px; }
+  @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
+  .proj-card{ background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:26px; }
+  .proj-card h3{ font-size:1.25rem; margin-bottom:8px; }
+  .proj-card p{ color:var(--ink-soft); font-size:0.92rem; line-height:1.6; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .chip{ font-family:"IBM Plex Mono",monospace; font-size:0.72rem; background:var(--surface-2); color:var(--ink-soft); padding:4px 9px; border-radius:6px; }
+
+  .skills-tbl{ width:100%; border-collapse:collapse; }
+  .skills-tbl td{ padding:9px 0; border-bottom:1px solid var(--border); font-size:0.88rem; }
+  .skills-tbl tr:last-child td{ border-bottom:none; }
+  .skills-tbl .cat{ color:var(--ink-faint); font-family:"IBM Plex Mono",monospace; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; width:150px; vertical-align:top; padding-top:11px; }
+
+  /* education */
+  .edu-row{ display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid var(--border); }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-row .right{ text-align:right; color:var(--ink-faint); font-family:"IBM Plex Mono",monospace; font-size:0.8rem; white-space:nowrap; }
+  .cert-list{ margin-top:18px; display:flex; flex-direction:column; gap:8px; }
+  .cert-list span{ font-size:0.88rem; color:var(--ink-soft); }
+  .cert-list span::before{ content:"✓ "; color:var(--accent); font-weight:700; }
+
+  footer{ padding-block:48px 64px; text-align:center; }
+  footer h2{ font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:14px; }
+  footer p{ color:var(--ink-soft); max-width:44ch; margin:0 auto 24px; }
+  .foot-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+  .foot-links a{ font-size:0.85rem; color:var(--ink-faint); text-decoration:none; }
+  .foot-links a:hover{ color:var(--accent-ink); }
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{ animation: rise .6s ease both; }
+    @keyframes rise{ from{ opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+  <a class="brand" href="#top">Viveka Anand Singh</a>
+  <div class="navlinks">
+    <a href="#journey">Journey</a>
+    <a href="#work">Case study</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Product Manager · formerly RPA Engineer</p>
+        <h1>I spent 4 years automating other people's workflows. <em>Now I design the product decisions behind them.</em></h1>
+        <p class="lede" style="margin-top:18px;">Ex-Genpact RPA developer turned product manager, currently sharpening the craft through NextLeap's PM fellowship. I like problems with a number attached — conversion rates, retention curves, the gap between what users say and what they do.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#work">See the case study</a>
+          <a class="btn btn-ghost" href="mailto:viveka.anandsingh@gmail.com">Get in touch</a>
+        </div>
+        <div class="kpi-strip">
+          <div class="kpi"><div class="num mono">3.7</div><div class="lbl">yrs in automation delivery</div></div>
+          <div class="kpi"><div class="num mono">8</div><div class="lbl">user interviews run</div></div>
+          <div class="kpi"><div class="num mono">24</div><div class="lbl">survey responses analyzed</div></div>
+          <div class="kpi"><div class="num mono">2</div><div class="lbl">products shipped solo</div></div>
+        </div>
+      </div>
+      <div class="funnel-card reveal">
+        <svg viewBox="0 0 300 230" width="100%" height="auto" role="img" aria-label="Wishlist conversion funnel: 100 percent add to wishlist, 36 percent purchase within 30 days, 64 percent lapse">
+          <g>
+            <polygon points="10,10 290,10 250,58 50,58" fill="var(--accent)" opacity="0.9"/>
+            <polygon points="50,62 250,62 218,110 82,110" fill="var(--accent)" opacity="0.68"/>
+            <polygon points="82,114 218,114 190,162 110,162" fill="var(--amber)" opacity="0.85"/>
+            <polygon points="110,166 190,166 172,206 128,206" fill="var(--bad)" opacity="0.85"/>
+          </g>
+          <text x="150" y="34" text-anchor="middle" font-size="12" font-weight="600" fill="#062E24">Wishlisted · 100%</text>
+          <text x="150" y="86" text-anchor="middle" font-size="12" font-weight="600" fill="#062E24">Revisited wishlist</text>
+          <text x="150" y="138" text-anchor="middle" font-size="11" font-weight="600" fill="#3A2405">Purchased · 36%</text>
+          <text x="150" y="185" text-anchor="middle" font-size="10" font-weight="600" fill="#3A0F03">Lapsed · 64%</text>
+        </svg>
+        <p class="cap">Real funnel from the Myntra wishlist research below — most intent dies quietly, not loudly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Background</p>
+        <h2 class="section-title">The move from automation to product</h2>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table class="journey">
+        <thead><tr><th>Period</th><th>Role</th><th>What it involved</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="period">2026 —</td>
+            <td><div class="role">Product Manager, in training</div><div class="org">NextLeap PM Fellowship</div></td>
+            <td class="detail">Full PM curriculum — synthesis thinking, KPI trees, metrics &amp; growth, MVP prototyping with AI, agent protocols — plus a full-cycle capstone: discovery, 8 user interviews, a 24-response survey, and a shipped MVP.</td>
+          </tr>
+          <tr>
+            <td class="period">Jul 2022 – Apr 2026</td>
+            <td><div class="role">RPA Developer</div><div class="org">Genpact — Kraft Heinz, Cantor Fitzgerald, Kimberly-Clark</div></td>
+            <td class="detail">Built, deployed and supported automation bots for global finance and CPG clients; sole point of contact across US, French and EU shifts. Diagnosed and resolved a critical production issue for a top-tier financial-services client, restoring smooth operations and improving that workflow's reliability by 20–30%.</td>
+          </tr>
+          <tr>
+            <td class="period">Jan – Jun 2022</td>
+            <td><div class="role">RPA Trainee</div><div class="org">Genpact</div></td>
+            <td class="detail">Delivered a client automation project; authored solution design docs (SDDs) and cut manual effort on target workflows by up to 85%, saving 20+ hours/week per bot at peak.</td>
+          </tr>
+          <tr>
+            <td class="period">2018 – 2022</td>
+            <td><div class="role">B.Tech, Electronics &amp; Communication</div><div class="org">BIT Mesra</div></td>
+            <td class="detail">Top 5 in branch; CGPA 7.89/10. Training &amp; Placement Head Coordinator — ran recruiter workshops and placement prep for the graduating cohort.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Featured case study</p>
+        <h2 class="section-title">Why do people forget the things they wanted?</h2>
+      </div>
+    </div>
+
+    <div class="case">
+      <span class="tag">NextLeap graduation project</span>
+      <h3>Wishlist Reveal — a return-trigger for Myntra's dead wishlists</h3>
+      <p class="lede">Growth-team case study: Myntra users add items to their wishlist with real intent, then never come back before that intent fades. The brief — lift 30-day purchase conversion on wishlisted items, with no monetary discounts on the table.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div class="n bad">64%</div><div class="d">of wishlisted items go unpurchased after 30 days</div></div>
+        <div class="stat"><div class="n warn">9/14</div><div class="d">non-buyers say they simply forgot the item existed</div></div>
+        <div class="stat"><div class="n good">77%</div><div class="d">suspect the price changed after wishlisting it</div></div>
+      </div>
+
+      <div class="bar-chart" role="img" aria-label="Top reasons users don't buy their wishlisted item: forgot it existed 8, changed their mind 5, found it cheaper elsewhere 4, price went up 4, out of stock or size gone 3">
+        <div class="bar-row"><div class="label">Forgot it existed</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="val">8</div></div>
+        <div class="bar-row"><div class="label">Changed their mind</div><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><div class="val">5</div></div>
+        <div class="bar-row"><div class="label">Found it cheaper elsewhere</div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><div class="val">4</div></div>
+        <div class="bar-row"><div class="label">Price went up</div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><div class="val">4</div></div>
+        <div class="bar-row"><div class="label">Out of stock / size gone</div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><div class="val">3</div></div>
+      </div>
+      <p class="cap" style="color:var(--ink-faint); font-size:0.78rem; margin-top:-8px;">From a 24-response survey, cross-validated against 8 qualitative interviews.</p>
+
+      <blockquote>
+        "Myntra's wishlist users lose real purchase intent not because they don't want the item, but because the wishlist gives them no reason to come back before that intent fades."
+        <cite>— locked problem statement, from synthesis of interview + survey data</cite>
+      </blockquote>
+
+      <p class="lede" style="margin-bottom:6px;"><strong style="color:var(--ink);">The MVP — "Wishlist Reveal."</strong> Instead of a flat price-drop alert, a curiosity-driven notification pulls users back at the moment their intent is most likely to reactivate.</p>
+      <ul class="mvp-list">
+        <li>Collection prompt + reminder at save-time, with a no-friction "skip to Uncategorized" path</li>
+        <li>Red-dot indicator plus price-drop, delivery-ETA and back-in-stock badges on wishlist items</li>
+        <li>Adaptive reminder that pulls itself forward when a delivery window demands it</li>
+        <li>"Simulate Next Visit" demo mode standing in for a live pricing/logistics feed</li>
+      </ul>
+
+      <div class="case-foot">
+        <span class="stack-line">React · Vite · TypeScript · Framer Motion — built with Google Antigravity, deployed on Vercel</span>
+        <a class="btn btn-primary" href="https://myntra-wishlist.vercel.app" target="_blank" rel="noopener">Open live MVP ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Also built</p>
+        <h2 class="section-title">Two more shipped products</h2>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="proj-card">
+        <h3>Restaurant Recommender — Bengaluru</h3>
+        <p>A Zomato-style recommender over a dataset of 52,000+ restaurants sourced from Hugging Face. Users filter by BLR area, cuisine, price band and rating, and get a ranked top-5 recommendation.</p>
+        <div class="chip-row">
+          <span class="chip">Google Antigravity</span>
+          <span class="chip">Railway</span>
+          <span class="chip">Vercel</span>
+        </div>
+        <a class="btn btn-ghost" style="margin-top:16px; padding:8px 14px; font-size:0.82rem;" href="https://github.com/Vivekacreates1309/BtrBite_Zomato_Milestone" target="_blank" rel="noopener">View repo ↗</a>
+      </div>
+      <div class="proj-card">
+        <h3>Document Q&amp;A Chatbot</h3>
+        <p>A retrieval-augmented (RAG) chatbot that answers questions grounded in a user-supplied document, built as a NextLeap AI-workflow milestone.</p>
+        <div class="chip-row">
+          <span class="chip">RAG</span>
+          <span class="chip">LLM prompting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Beyond the desk</p>
+        <h2 class="section-title">Other things I've shown up for</h2>
+      </div>
+    </div>
+    <div class="edu-row">
+      <div><strong>Teaching Volunteer</strong> — Teach For India</div>
+      <div class="right">Volunteering</div>
+    </div>
+    <div class="edu-row">
+      <div><strong>Data Analyst Intern</strong> — AOE, Green Audit project</div>
+      <div class="right">Internship</div>
+    </div>
+    <div class="edu-row">
+      <div><strong>Academic Tutor</strong> — independent</div>
+      <div class="right">Since 2016</div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Toolkit</p>
+        <h2 class="section-title">What I work with</h2>
+      </div>
+    </div>
+    <table class="skills-tbl">
+      <tr><td class="cat">Discovery &amp; Research</td><td>User interviews · survey design · synthesis &amp; theming · JTBD framing</td></tr>
+      <tr><td class="cat">Strategy &amp; Metrics</td><td>KPI trees · North Star / guardrail metrics · RICE / impact-effort prioritization</td></tr>
+      <tr><td class="cat">Design &amp; Prototyping</td><td>Figma · Whimsical · user flows &amp; wireframing</td></tr>
+      <tr><td class="cat">AI &amp; Build</td><td>Google Antigravity · Cursor · prompt engineering · RAG · REST APIs</td></tr>
+      <tr><td class="cat">Delivery</td><td>Jira · solution design docs (SDDs) · stakeholder &amp; client communication</td></tr>
+    </table>
+    <div class="cert-list">
+      <span>Google Project Management Certificate — Coursera</span>
+      <span>Business Foundations Specialization — Wharton, via Coursera</span>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's talk product.</h2>
+    <p>Open to APM and early-career PM roles — happiest where research, metrics and a scrappy build come together.</p>
+    <a class="btn btn-primary" href="mailto:viveka.anandsingh@gmail.com">viveka.anandsingh@gmail.com</a>
+    <div class="foot-links">
+      <a href="https://myntra-wishlist.vercel.app" target="_blank" rel="noopener">Wishlist Reveal (live)</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
